@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -13,8 +13,28 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Background halaman: gambar full-page dengan overlay */
         body {
-            background: #f2f4f7;
+            min-height: 100vh;
+            background: url('https://images.search.yahoo.com/search/images;_ylt=Awr1QT6y3Ddp9wEACqyJzbkF;_ylu=Y29sbwNzZzMEcG9zAzIwBHZ0aWQDBHNlYwNzcg--?fr=mcafee&p=sma+n+3+pemalang&imgurl=https%3A%2F%2Fcdn-2.tstatic.net%2Fjateng%2Ffoto%2Fbank%2Fimages%2FRistono-SPdMSi.jpg') center/cover no-repeat fixed;
+            color: #222;
+            position: relative;
+        }
+
+        /* Overlay tipis agar konten tetap terbaca di atas gambar */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.80); /* ubah opacity sesuai kebutuhan */
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Pastikan elemen konten berada di atas overlay */
+        header, nav, .container, .footer, .hero {
+            position: relative;
+            z-index: 1;
         }
 
         /* Header */
@@ -42,17 +62,25 @@
             text-decoration: underline;
         }
 
-        /* Hero Banner */
+        /* Hero Banner (sederhana agar tidak bertabrakan dengan background halaman) */
         .hero {
-            background: url('https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
             height: 260px;
-            display: fill;
+            display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 5px #000;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
             text-align: center;
             padding: 20px;
+            border-radius: 8px;
+            margin: 20px;
+            background: rgba(0, 83, 179, 0.7); /* semi-transparan agar kontras dengan background */
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h2 {
+            margin: 0;
+            font-size: 1.6rem;
         }
 
         .container {
@@ -66,7 +94,7 @@
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.12);
         }
 
         .card h2 {
@@ -91,6 +119,11 @@
 
             nav a {
                 margin: 8px 0;
+            }
+
+            .hero {
+                height: 200px;
+                margin: 12px;
             }
         }
     </style>
@@ -150,12 +183,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
